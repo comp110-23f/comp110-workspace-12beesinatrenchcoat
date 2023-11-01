@@ -4,7 +4,6 @@ __author__ = "730705250"
 
 from lessons.zip import zip
 
-
 def test_empty_lists() -> None:
     """Empty lists should return an empty dictionary."""
     keys: list[str] = []
