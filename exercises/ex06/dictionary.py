@@ -70,6 +70,7 @@ def update_attendance(attendance_log: dict[str, list[str]], day_of_week: str, st
     if not (day_of_week in attendance_log):
         attendance_log[day_of_week] = []
 
-    attendance_log[day_of_week].append(student_name)
+    if not (student_name in attendance_log[day_of_week]):
+        attendance_log[day_of_week].append(student_name)
 
     return attendance_log
