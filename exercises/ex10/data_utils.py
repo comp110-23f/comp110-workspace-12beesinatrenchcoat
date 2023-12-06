@@ -40,6 +40,10 @@ def columnar(table: list[dict[str, str]]) -> dict[str, list[str]]:
 def head(table: dict[str, list[str]], rows: int) -> dict[str, list[str]]:
     """Create a new column-based table with a specified number of rows."""
     # This kinda mashes column_values and columnar together.
+    if rows > len(table):
+        print("Row count higher than table row count, returning entire table!")
+        rows = len(table)
+
     output: dict[str, list[str]] = {}
     for column in table.keys():
         values: list[str] = []
@@ -67,7 +71,7 @@ def concat(table1: dict[str, list[str]], table2: dict[str, list[str]]) -> dict[s
         output[column] = table1[column]
 
     for column in table2.keys():
-        if output[column]:
+        if column in output:
             output[column] += table2[column]
         else:
             output[column] = table2[column]
